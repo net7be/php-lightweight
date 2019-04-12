@@ -1,0 +1,11 @@
+{
+  "name": "php-lightweight",
+  "version": "1.0.0",
+  "description": "Structure for a simple PHP project with webpack and single point entry",
+  "main": "src/js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Net7",
+  "license": "MIT"
+}
