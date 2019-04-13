@@ -39,19 +39,18 @@ if ($reqUri === '/') {
   $page['name'] = 'index';
 } elseif (strpos($reqUri, API_ROOT) === 0) {
   // Requesting an API endpoint.
-  // API calls also have their own 404.
-  $page['path'] = $includePathApi;
   $query = explode('/', rtrim(substr($reqUri, strlen(API_ROOT)), '/'));
 
   // Remove dots and a few special characters:
   if (isset($query[0]) &&
     isset($query[1]) && 
     (preg_match('/^[A-Za-z0-9-_]+$/', $query[1]) === 1) &&
-    (is_file($page['path'] . $query[1] . '.php'))) {
+    (is_file($includePathApi . $query[1] . '.php'))) {
       // Set the API version:
       $app['api_version'] = $query[0];
       // We can now remove the API version:
       array_shift($query);
+      $page['path'] = $includePathApi;
       $page['name'] = $query[0];
       $app['url_params'] = parseUriParams($query);
     }
