@@ -12,7 +12,7 @@
  * into $app['api_version'].
  */
 
-define('API_ROOT', '/api/');
+include_once(dirname(__DIR__) . '/conf/config.php');
 
 function parseUriParams($query) {
   $res = Array();

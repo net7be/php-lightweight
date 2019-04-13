@@ -23,9 +23,17 @@ We assume some sort of API version identifier to follow the "/api/" part of the 
 That version identifier is accessible to the API endpoint handler script through the `$app['api_version']` string.
 
 ## TODO
-- [ ] Explain how to add a CSS framework
 - [ ] Do it like React with a rotating logo :D
 - [ ] Test what happens when just using root_url/api
-- [ ] Make the document title dynamic
-- [ ] Talk about tests somewhere
-- [ ] Explain how to add more JS bundles
+- [x] Make the document title dynamic
+- [ ] Can the example API endpoint also serve as readiness probe for K8S?
+- [ ] Add autoprefixer to the webpack config for regular .css files
+
+## To explain
+- Explain how to add a CSS framework
+- Talk about tests somewhere
+- Explain how to add more JS bundles
+- Explain how you can inline page content inside a view PHP file and how we sort of moved away from absolute separation of concern (404.php will use that I think)
+- There is no caching for templates - assets paths or fully processed partials could be cached
+- Link the "PHP templating" page from the official doc (native PHP templating?)
+- Explain how to add Babel and why I'm not using it in the baseline

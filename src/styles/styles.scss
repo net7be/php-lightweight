@@ -33,3 +33,25 @@ body > main {
   align-items: center;
   justify-content: center;
 }
+
+.hello {
+  background-color: $background-color;
+  box-shadow: $layout-shadow;
+  padding: 2.2rem 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hello > img {
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

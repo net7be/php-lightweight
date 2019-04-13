@@ -47,12 +47,34 @@ const config = {
           MiniCssExtractPlugin.loader,
           'css-loader'
         ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          { loader: "css-loader" },
+          {
+            // PostCSS stuff is required by Bootstrap SCSS.
+            loader: 'postcss-loader',
+            options: {
+              plugins: function () {
+                return [
+                  require('precss'),
+                  require('autoprefixer')
+                ];
+              }
+            }
+          },
+          { loader: "sass-loader" }
+        ]
       }
     ]
   },
   plugins: [
     new CleanWebpackPlugin([contentBase]),
     new ManifestPlugin({
+      // We're keeping the manifest as small as possible so that
+      // json_decode is as fast as it can be (used for EVERY requests).
       filter: ({path}) => !path.match(/\.(png|jpe?g|gif|svg)(\?.*)?$/i)
     }),
     new MiniCssExtractPlugin({
