@@ -22,12 +22,16 @@ We assume some sort of API version identifier to follow the "/api/" part of the 
 
 That version identifier is accessible to the API endpoint handler script through the `$app['api_version']` string.
 
+## Package versions
+* Version 2 of clean-webpack-plugin seems to behave completely differently. A good idea would be to just use rimraf to clean up the dist foler.
+
 ## TODO
 - [ ] Do it like React with a rotating logo :D
 - [ ] Test what happens when just using root_url/api
 - [x] Make the document title dynamic
 - [ ] Can the example API endpoint also serve as readiness probe for K8S?
 - [ ] Add autoprefixer to the webpack config for regular .css files
+- [ ] Test on Windows
 
 ## To explain
 - Explain how to add a CSS framework
@@ -37,3 +41,4 @@ That version identifier is accessible to the API endpoint handler script through
 - There is no caching for templates - assets paths or fully processed partials could be cached
 - Link the "PHP templating" page from the official doc (native PHP templating?)
 - Explain how to add Babel and why I'm not using it in the baseline
+- Explain that the PHP dev server depends on the locally installed extensions and how to enable them on Windows

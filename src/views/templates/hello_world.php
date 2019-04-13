@@ -1,3 +1,3 @@
 <div class="hello">
-  <img src="/assets/icon.png" alt="Rotating logo">
+  <img src="/assets/images/icon.png" alt="Rotating logo">
 </div>
