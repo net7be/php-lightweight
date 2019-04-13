@@ -26,12 +26,13 @@ That version identifier is accessible to the API endpoint handler script through
 * Version 2 of clean-webpack-plugin seems to behave completely differently. A good idea would be to just use rimraf to clean up the dist foler.
 
 ## TODO
-- [ ] Do it like React with a rotating logo :D
+- [x] Do it like React with a rotating logo :D
 - [ ] Test what happens when just using root_url/api
 - [x] Make the document title dynamic
 - [ ] Can the example API endpoint also serve as readiness probe for K8S?
 - [ ] Add autoprefixer to the webpack config for regular .css files
 - [ ] Test on Windows
+- [ ] Add a Dockerfile
 
 ## To explain
 - Explain how to add a CSS framework
