@@ -23,6 +23,26 @@ function parseUriParams($query) {
   return $res;
 }
 
+/**
+ * Double check if the file exists and if it really sits 
+ * in the directory it's supposed to be in.
+ * This is to add another check for possible UTF attacks
+ * and other attempts to import a PHP file outside of
+ * the allowed import directories.
+ * 
+ * @param string $path The fully constructed import path
+ * @param string $root The directory that the import path
+ * is supposed to match
+ * @return bool true if allowed to import, false otherwise
+ */
+function isAllowedToImport($path, $root) {
+  if (is_file($path) && 
+    rtrim($root, '/') === dirname($path)) 
+      return true;
+  return false;
+}
+
+// The include paths **must have a trailing slash**
 // Include path for views:
 $includePath = dirname(__DIR__) . '/src/views/';
 // Include path for API handlers:
@@ -45,7 +65,7 @@ if ($reqUri === '/') {
   if (isset($query[0]) &&
     isset($query[1]) && 
     (preg_match('/^[A-Za-z0-9-_]+$/', $query[1]) === 1) &&
-    (is_file($includePathApi . $query[1] . '.php'))) {
+    (isAllowedToImport($includePathApi . $query[1] . '.php', $includePathApi))) {
       // Set the API version:
       $app['api_version'] = $query[0];
       // We can now remove the API version:
@@ -75,7 +95,8 @@ if ($reqUri === '/') {
     $pageCandidate = $matches[2];
   }
   // We should check if the page exists:
-  if (is_file($page['path'] . $pageCandidate . '.php')) $page['name'] = $pageCandidate;
+  if (isAllowedToImport($page['path'] . $pageCandidate . '.php', $includePath)) 
+    $page['name'] = $pageCandidate;
 }
 
 $app['page'] = $page['name'];
