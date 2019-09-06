@@ -29,9 +29,8 @@ That version identifier is accessible to the API endpoint handler script through
 - [x] Do it like React with a rotating logo :D
 - [ ] Test what happens when just using root_url/api
 - [x] Make the document title dynamic
-- [ ] Can the example API endpoint also serve as readiness probe for K8S?
 - [ ] Add autoprefixer to the webpack config for regular .css files
-- [ ] Test on Windows
+- [x] Test on Windows
 - [ ] Add a Dockerfile
 
 ## To explain
