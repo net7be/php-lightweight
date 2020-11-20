@@ -49,7 +49,14 @@ $includePath = dirname(__DIR__) . '/src/views/';
 $includePathApi = dirname(__DIR__) . '/src/api/';
 
 // Request URI including query string.
-$reqUri = $_SERVER["REQUEST_URI"];
+if ($parsedUri = parse_url($_SERVER["REQUEST_URI"])) {
+  $reqUri = $parsedUri['path'];
+} else {
+  // We got an invalid URL for some reason.
+  // This is never supposed to happen so let's
+  // show 404.
+  $reqUri = '';
+}
 // Future assoc for request params available throughout
 // the app:
 $app = Array();
